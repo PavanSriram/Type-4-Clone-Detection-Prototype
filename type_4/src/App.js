@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Codes from "./Codes";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/theme-dracula";
+import axios from "axios";
 
 function App() {
   const [lang1, setLang1] = useState("");
@@ -23,24 +24,28 @@ function App() {
   const [output, setOutput] = useState("");
 
   const request = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ lang1, lang2, prog1, prog2 }),
+    lang1, lang2, prog1, prog2
   };
 
   const findMatch = async () => {
-    console.log(request);
-    await fetch("http://localhost:3001/", request)
-      .then((res) => {
-        console.log(res.json());
-        fetch("http://localhost:3001/").then(
-          res.json().then((data) => {
-            console.log(data);
-            setOutput(data);
-          })
-        );
-      })
-      .catch((err) => console.log(err));
+    // console.log(request);
+
+    await axios.post("http://localhost:3001/", request).then((res) => {
+      console.log(res.data);
+      setOutput(res.data);
+    })
+
+  //   await fetch("http://localhost:3001/", request)
+  //     .then(async (res) => {
+  //       console.log(res.json());
+  //       await fetch("http://localhost:3001/").then(
+  //         res.json.then((data) => {
+  //           console.log(data);
+  //           setOutput(data);
+  //         })
+  //       );
+  //     })
+  //     .catch((err) => console.log(err));
   };
 
   //take care of the names of the programs
@@ -77,61 +82,81 @@ function App() {
           ? setProgram1(codes.cppReverseArray)
           : setProgram2(codes.cppReverseArray);
         break;
-      case "javaBubbleSort":
+      case "cppCyclicArray":
         progNum === 1
-          ? setProgram1(codes.javaBubbleSort)
-          : setProgram2(codes.javaBubbleSort);
+          ? setProgram1(codes.cppCyclicArray)
+          : setProgram2(codes.cppCyclicArray);
         break;
-      case "javaInsertionSort":
-        progNum === 1
-          ? setProgram1(codes.javaInsertionSort)
-          : setProgram2(codes.javaInsertionSort);
-        break;
-      case "javaMergeSort":
-        progNum === 1
-          ? setProgram1(codes.javaMergeSort)
-          : setProgram2(codes.javaMergeSort);
-        break;
-      case "javaQuickSort":
-        progNum === 1
-          ? setProgram1(codes.javaQuickSort)
-          : setProgram2(codes.javaQuickSort);
-        break;
-      case "javaSelectionSort":
-        progNum === 1
-          ? setProgram1(codes.javaSelectionSort)
-          : setProgram2(codes.javaSelectionSort);
-        break;
-      case "pythonBubbleSort":
-        progNum === 1
-          ? setProgram1(codes.pythonBubbleSort)
-          : setProgram2(codes.pythonBubbleSort);
-        break;
-      case "pythonInsertionSort":
-        progNum === 1
-          ? setProgram1(codes.pythonInsertionSort)
-          : setProgram2(codes.pythonInsertionSort);
-        break;
-      case "pythonMergeSort":
-        progNum === 1
-          ? setProgram1(codes.pythonMergeSort)
-          : setProgram2(codes.pythonMergeSort);
-        break;
-      case "pythonQuickSort":
-        progNum === 1
-          ? setProgram1(codes.pythonQuickSort)
-          : setProgram2(codes.pythonQuickSort);
-        break;
-      case "pythonSelectionSort":
-        progNum === 1
-          ? setProgram1(codes.pythonSelectionSort)
-          : setProgram2(codes.pythonSelectionSort);
-        break;
-      case "pyReverseArray":
-        progNum === 1
-          ? setProgram1(codes.pyReverseArray)
-          : setProgram2(codes.pyReverseArray);
-        break;
+        case "cMergeSort":
+          progNum === 1
+            ? setProgram1(codes.cMergeSort)
+            : setProgram2(codes.cMergeSort);
+          break;
+        case "cQuickSort":
+          progNum === 1
+            ? setProgram1(codes.cQuickSort)
+            : setProgram2(codes.cQuickSort);
+          break;
+        case "cSelectionSort":
+          progNum === 1
+            ? setProgram1(codes.cSelectionSort)
+            : setProgram2(codes.cSelectionSort);
+          break;
+        case "cBubbleSort":
+          progNum === 1
+            ? setProgram1(codes.cBubbleSort)
+            : setProgram2(codes.cBubbleSort);
+          break;
+        case "cInsertionSort":
+          progNum === 1
+            ? setProgram1(codes.cInsertionSort)
+            : setProgram2(codes.cInsertionSort);
+          break;
+        case "cReverseArray":
+          progNum === 1
+            ? setProgram1(codes.cReverseArray)
+            : setProgram2(codes.cReverseArray);
+          break;
+        case "cCyclicArray":
+          progNum === 1
+            ? setProgram1(codes.cCyclicArray)
+            : setProgram2(codes.cCyclicArray);
+          break;
+          case "pyMergeSort":
+            progNum === 1
+              ? setProgram1(codes.pyMergeSort)
+              : setProgram2(codes.pyMergeSort);
+            break;
+          case "pyQuickSort":
+            progNum === 1
+              ? setProgram1(codes.pyQuickSort)
+              : setProgram2(codes.pyQuickSort);
+            break;
+          case "pySelectionSort":
+            progNum === 1
+              ? setProgram1(codes.pySelectionSort)
+              : setProgram2(codes.pySelectionSort);
+            break;
+          case "pyBubbleSort":
+            progNum === 1
+              ? setProgram1(codes.pyBubbleSort)
+              : setProgram2(codes.pyBubbleSort);
+            break;
+          case "pyInsertionSort":
+            progNum === 1
+              ? setProgram1(codes.pyInsertionSort)
+              : setProgram2(codes.pyInsertionSort);
+            break;
+          case "pyReverseArray":
+            progNum === 1
+              ? setProgram1(codes.pyReverseArray)
+              : setProgram2(codes.pyReverseArray);
+            break;
+          case "pyCyclicArray":
+            progNum === 1
+              ? setProgram1(codes.pyCyclicArray)
+              : setProgram2(codes.pyCyclicArray);
+            break;
       default:
         progNum === 1 ? setProgram1("") : setProgram2("");
         break;
@@ -207,7 +232,7 @@ function App() {
                     onChange={handleLang1}
                   >
                     <option>Language 1</option>
-                    <option value="java"> Java</option>
+                    <option value="c"> C</option>
                     <option value="cpp">C++</option>
                     <option value="py">Python</option>
                   </Form.Select>
@@ -217,7 +242,7 @@ function App() {
                     onChange={handleLang2}
                   >
                     <option>Language 2</option>
-                    <option value="java">Java</option>
+                    <option value="c">C</option>
                     <option value="cpp">C++</option>
                     <option value="py">Python</option>
                   </Form.Select>

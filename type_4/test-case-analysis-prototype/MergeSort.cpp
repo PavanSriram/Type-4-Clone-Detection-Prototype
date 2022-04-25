@@ -85,7 +85,7 @@ int main()
     fstream file;
     string word, t, q, filename;
     vector<int> fileInputs;
-    filename = "test-case-1.txt";
+    filename = "../test-case-analysis-prototype/test-case-1.txt";
     file.open(filename.c_str());
     while (file >> word)
     {
@@ -116,7 +116,8 @@ int main()
     // cout << "\nSorted array is \n";
     // printArray(arr, arr_size);
 
-    ofstream myfile("output.txt");
+    fstream myfile;
+    myfile.open("../test-case-analysis-prototype/output.txt");
     if (myfile.is_open())
     {
         for (int count = 0; count < n; count++)

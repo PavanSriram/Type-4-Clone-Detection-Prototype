@@ -7,7 +7,7 @@ def reverseList(A, start, end):
 arr = []
 n = -1
 flag = 0
-file1 = open('test-case-1.txt', 'r')
+file1 = open('../test-case-analysis-prototype/test-case-1.txt', 'r')
 Lines = file1.readlines()
 for line in Lines:
     curr_line = line.strip()
@@ -26,7 +26,7 @@ reverseList(arr, 0, n-1)
 # print("Reversed list is")
 # print(A)
 
-file1 = open('output.txt', 'w')
+file1 = open('../test-case-analysis-prototype/output.txt', 'w')
 for i in range(0, n):
 	# print (arr[i], end = ' ')
     converted_arr_i = str(arr[i])

@@ -81,13 +81,16 @@ void printArray(int arr[], int size)
 }
 
 // Driver code
-int main()
+int main(int argc, char* argv[])
 {
 	FILE* ptr;
 	char ch;
 
 	// Opening file in reading mode
-	ptr = fopen("test-case-1.txt", "r");
+    char str1[100] = "../test-case-analysis-prototype/test-cases/";
+    strcat(str1, argv[1]);
+    printf("fileCPath: %s\n", str1);
+	ptr = fopen(str1, "r");
 
 	if (NULL == ptr) {
 		printf("file can't be opened \n");
@@ -155,7 +158,7 @@ int main()
    FILE *fptr;
 
    // use appropriate location if you are using MacOS or Linux
-   fptr = fopen("output.txt","w");
+   fptr = fopen("../test-case-analysis-prototype/output.txt","w");
 
    if(fptr == NULL)
    {

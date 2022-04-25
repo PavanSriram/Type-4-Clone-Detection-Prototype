@@ -123,7 +123,7 @@
 using namespace std;
 
 vector<pair<vector<string>, vector<string>>> data_set;
-int test_case_count = 1;
+int test_case_count = 2;
 int total_match_count = 0;
 
 int main(int argc, char** argv)
@@ -132,6 +132,10 @@ int main(int argc, char** argv)
     string language_2 = argv[2];
     string input_filename_1 = argv[3];
     string input_filename_2 = argv[4];
+
+    std::ofstream ofs;
+    ofs.open("../test-case-analysis-prototype/output.txt", std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
     
     for (int i = 1; i <= test_case_count; i++)
     {
@@ -140,11 +144,13 @@ int main(int argc, char** argv)
         // for language-1
         if (language_1 == "cpp")
         {
-            system("g++ ../test-case-analysis-prototype/MergeSort.cpp -o ../test-case-analysis-prototype/MergeSort");
+            system(("g++ ../test-case-analysis-prototype/"+ input_filename_1 +".cpp -o ../test-case-analysis-prototype/"+ input_filename_1).c_str());
             
             cout << "Bavunnava" << endl;
 
-            system("cd ../test-case-analysis-prototype && MergeSort");
+            string execute = "cd ../test-case-analysis-prototype && " + input_filename_1 + " " +test_filename;
+
+            system(execute.c_str());
 
             // system("mkdir Bokka3");
 
@@ -164,7 +170,7 @@ int main(int argc, char** argv)
         // for language-2
         if (language_2 == "py")
         {
-            system("python -u ../test-case-analysis-prototype/ReverseArray.py");
+            system(("python -u ../test-case-analysis-prototype/ReverseArray.py " + test_filename).c_str());
             
             // system("mkdir Bokka2");
             cout << "hi py" << endl;
@@ -178,6 +184,31 @@ int main(int argc, char** argv)
                 fileInputs.push_back(word);
             }
             temp.second = fileInputs;
+        }
+
+        if (language_2 == "c")
+        {
+            system(("gcc ../test-case-analysis-prototype/"+ input_filename_2 +".c -o ../test-case-analysis-prototype/"+ input_filename_2).c_str());
+            
+            cout << "Bavunnava" << endl;
+
+            string execute = "cd ../test-case-analysis-prototype && " + input_filename_2 + " " +test_filename;
+
+            system(execute.c_str());
+
+            // system("mkdir Bokka3");
+
+            cout << "hi cpp" << endl;
+            fstream file;
+            string word, t, q, filename;
+            vector<string> fileInputs;
+            filename = "../test-case-analysis-prototype/output.txt";
+            file.open(filename.c_str());
+            while (file >> word)
+            {
+                fileInputs.push_back(word);
+            }
+            temp.first = fileInputs;
         }
         data_set.push_back(temp);
     }

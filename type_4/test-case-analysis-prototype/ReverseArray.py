@@ -1,3 +1,7 @@
+import sys
+# for x in sys.argv:
+#      print("Argument: ", sys.argv[1])
+
 def reverseList(A, start, end):
 	while start < end:
 		A[start], A[end] = A[end], A[start]
@@ -7,7 +11,7 @@ def reverseList(A, start, end):
 arr = []
 n = -1
 flag = 0
-file1 = open('../test-case-analysis-prototype/test-case-1.txt', 'r')
+file1 = open('../test-case-analysis-prototype/test-cases/'+sys.argv[1], 'r')
 Lines = file1.readlines()
 for line in Lines:
     curr_line = line.strip()

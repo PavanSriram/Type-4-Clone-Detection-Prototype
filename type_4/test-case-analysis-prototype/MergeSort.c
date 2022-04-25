@@ -151,7 +151,7 @@ int main(int argc, char* argv[])
 
     mergeSort(arr, 0, n - 1);
     // printf("Reversed array is \n");
-    // printArray(arr, n);
+    printArray(arr, n);
 
 
 
@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
 
 //    fprintf(fptr,"%d",num);
    for(int i=0; i<n; i++){
-       fprintf(fptr," %d\n",arr[i]);
+       fprintf(fptr,"%d\n",arr[i]);
    }
    fclose(fptr);
 

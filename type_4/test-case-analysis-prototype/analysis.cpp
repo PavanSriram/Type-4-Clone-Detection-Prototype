@@ -198,7 +198,7 @@ int main(int argc, char** argv)
 
             // system("mkdir Bokka3");
 
-            cout << "hi cpp" << endl;
+            cout << "hi c" << endl;
             fstream file;
             string word, t, q, filename;
             vector<string> fileInputs;
@@ -208,7 +208,7 @@ int main(int argc, char** argv)
             {
                 fileInputs.push_back(word);
             }
-            temp.first = fileInputs;
+            temp.second = fileInputs;
         }
         data_set.push_back(temp);
     }
@@ -218,10 +218,12 @@ int main(int argc, char** argv)
         pair<vector<string>, vector<string>> temp;
         temp = data_set[i];
         cout << i+1 << ":" << endl;
+        cout << "first:" << endl;
         for(int j=0; j<temp.first.size(); j++){
             cout << temp.first[j] << " ";
         }
         cout << endl;
+        cout << "second:" << endl;
         for(int j=0; j<temp.second.size(); j++){
             cout << temp.second[j] << " ";
         }
@@ -241,7 +243,7 @@ int main(int argc, char** argv)
 
     float match_probability = (total_match_count/(test_case_count+0.0));
 
-    cout << "Match Probability: " << match_probability << "%" << endl;
+    cout << "Match Probability: " << match_probability*100 << "%" << endl;
 
     return 0;
 }

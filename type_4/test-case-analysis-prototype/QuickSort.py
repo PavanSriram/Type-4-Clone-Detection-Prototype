@@ -1,3 +1,5 @@
+import sys
+
 def partition(arr, low, high):
   pivot = arr[high]
   i = low - 1
@@ -19,7 +21,7 @@ def quick_sort(arr, low, high):
 arr = []
 n = -1
 flag = 0
-file1 = open('test-case-1.txt', 'r')
+file1 = open('../test-case-analysis-prototype/test-cases/'+sys.argv[1], 'r')
 Lines = file1.readlines()
 for line in Lines:
     curr_line = line.strip()
@@ -45,7 +47,7 @@ quick_sort(arr, 0, n - 1)
 # for i in range(0, n):
 # 	print (arr[i], end = ' ')
 
-file1 = open('output.txt', 'w')
+file1 = open('../test-case-analysis-prototype/output.txt', 'w')
 for i in range(0, n):
 	# print (arr[i], end = ' ')
     converted_arr_i = str(arr[i])

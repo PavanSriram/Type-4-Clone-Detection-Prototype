@@ -1,3 +1,5 @@
+import sys
+
 def rotate(arr, n):
 	x = arr[n - 1]
 	
@@ -10,7 +12,7 @@ def rotate(arr, n):
 arr = []
 n = -1
 flag = 0
-file1 = open('test-case-1.txt', 'r')
+file1 = open('../test-case-analysis-prototype/test-cases/'+sys.argv[1], 'r')
 Lines = file1.readlines()
 for line in Lines:
     curr_line = line.strip()
@@ -35,7 +37,7 @@ rotate(arr, n)
 # for i in range(0, n):
 # 	print (arr[i], end = ' ')
 
-file1 = open('test-case-1-cycle-array-py.txt', 'w')
+file1 = open('../test-case-analysis-prototype/output.txt', 'w')
 for i in range(0, n):
 	# print (arr[i], end = ' ')
     converted_arr_i = str(arr[i])

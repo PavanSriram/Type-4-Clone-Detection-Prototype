@@ -26,13 +26,16 @@ void printArray(int arr[], int size)
 	cout << endl;
 }
 
-int main()
+int main(int argc, char** argv)
 {
     fstream file;
     string word, t, q, filename;
     vector<int> fileInputs;
-    filename = "test-case-1.txt";
-    file.open(filename.c_str());
+    char str1[100] = "../test-case-analysis-prototype/test-cases/";
+    strcat(str1, argv[1]);
+    printf("Filepath: %s\n", str1);
+    // filename = "test-case-1.txt";
+    file.open(str1);
     while (file >> word)
     {
         // cout << word << endl;
@@ -54,7 +57,8 @@ int main()
 	bubbleSort(arr, n);
 	// cout<<"Sorted array: \n";
 	// printArray(arr, n);
-    ofstream myfile("test-case-1-bubble-sort-cpp.txt");
+    fstream myfile;
+    myfile.open("../test-case-analysis-prototype/output.txt");
     if (myfile.is_open())
     {
         for (int count = 0; count < n; count++)

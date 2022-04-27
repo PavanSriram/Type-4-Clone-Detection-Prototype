@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 	// Opening file in reading mode
 	char str1[100] = "../test-case-analysis-prototype/test-cases/";
     strcat(str1, argv[1]);
-    printf("fileCPath: %s\n", str1);
+    // printf("fileCPath: %s\n", str1);
 	ptr = fopen(str1, "r");
 
 	if (NULL == ptr) {

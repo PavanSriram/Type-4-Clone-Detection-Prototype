@@ -10,7 +10,7 @@ const outfile = __dirname + "/../test-case-analysis-prototype/analysis";
 
 const app = express();
 app.use(cors());
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -44,5 +44,13 @@ app.post('/', (req, res) => {
     // res.json("Hello World!!!");
     // console.log('Hello world');
 });
+
+if(process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(__dirname, 'src', 'build')));
+
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, 'src', 'build', 'index.html'))
+	});
+}
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));

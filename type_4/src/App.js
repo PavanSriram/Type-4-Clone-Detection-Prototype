@@ -28,8 +28,6 @@ function App() {
   };
 
   const findMatch = async () => {
-    // console.log(request);
-
     await axios.post("http://localhost:3001/", request).then((res) => {
       console.log(res.data);
       setOutput(res.data);
@@ -48,7 +46,7 @@ function App() {
   //     .catch((err) => console.log(err));
   };
 
-  //take care of the names of the programs
+  //takes care of the names of the programs
   const handleProgram = (programName, progNum) => {
     let codes = new Codes();
     switch (programName) {
@@ -165,20 +163,10 @@ function App() {
 
   const handleLang1 = (e) => {
     setLang1(e.target.value);
-
-    // if(prog1 !== ""){
-    //   let programName = e.target.value + prog1;
-    //   handleProgram(programName, 1);
-    // }
   };
 
   const handleLang2 = (e) => {
     setLang2(e.target.value);
-
-    // if(prog2 !== ""){
-    //   let programName = e.target.value + prog2;
-    //   handleProgram(programName, 2);
-    // }
   };
 
   const handleProg1 = (e) => {
@@ -186,12 +174,9 @@ function App() {
       alert("Please select a language for program 1");
       return;
     }
-    // console.log("HEllo");
     setProg1(e.target.value);
     let programName = lang1 + e.target.value;
     handleProgram(programName, 1);
-
-    // console.log(programName);
   };
 
   const handleProg2 = (e) => {
@@ -203,8 +188,6 @@ function App() {
     setProg2(e.target.value);
     let programName = lang2 + e.target.value;
     handleProgram(programName, 2);
-
-    // console.log(programName);
   };
 
   return (
@@ -327,7 +310,24 @@ function App() {
             <Row md={3}>
               <Col md={12}>
                 <Card className="bottomCard">
-                  <Card.Body>{output}</Card.Body>
+                  {/* <Card.Body> */}
+                    <AceEditor
+                    theme="dracula"
+                    placeholder=""
+                    fontSize={16}
+                    showPrintMargin={false}
+                    showGutter={false}
+                    value={output}
+                    focus={false}
+                    style={{ width: "100%", zIndex: `0`, height: `200px` }}
+                    name="mipsIDE"
+                    editorProps={{ $blockScrolling: true }}
+                    setOptions={{ tabSize: 4, wrap: false, readOnly: true }}
+                    enableBasicAutocompletion
+                    autoScrollEditorIntoView
+                    mode="javascript"
+                  />
+                  {/* </Card.Body> */}
                 </Card>
               </Col>
             </Row>

@@ -34,7 +34,7 @@ int main(int argc, char** argv)
     vector<int> fileInputs;
     char str1[100] = "../test-case-analysis-prototype/test-cases/";
     strcat(str1, argv[1]);
-    printf("Filepath: %s\n", str1);
+    // printf("Filepath: %s\n", str1);
     // filename = "../test-case-analysis-prototype/"+argv[1];
     file.open(str1);
     while (file >> word)

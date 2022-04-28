@@ -2,7 +2,7 @@
 using namespace std;
 
 vector<pair<vector<string>, vector<string>>> data_set;
-int test_case_count = 2;
+int test_case_count = 10;
 int total_match_count = 0;
 
 int main(int argc, char** argv)
@@ -102,10 +102,25 @@ int main(int argc, char** argv)
     for(int i=0; i<data_set.size(); i++){
         pair<vector<string>, vector<string>> temp;
         temp = data_set[i];
+        bool flag = false;
         if(temp.first == temp.second){
             total_match_count++;
+            flag = true;
         }
+        cout << "Test Case " << i+1 << ":" << endl;
+        cout << "\t" << input_filename_1 << ": ";
+        for(int i=0; i<temp.first.size(); i++){
+            cout << temp.first[i] << " ";
+        }
+        cout << endl;
+        cout << "\t" << input_filename_2 << ": " ;
+        for(int i=0; i<temp.second.size(); i++){
+            cout << temp.second[i] << " ";
+        }
+        cout << endl;
+        cout << "\n";
     }
+    cout << endl;
 
     // cout << total_match_count << "<---->" << test_case_count << endl;
 

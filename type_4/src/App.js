@@ -28,6 +28,7 @@ function App() {
   };
 
   const findMatch = async () => {
+    setOutput("LOADING...");
     await axios.post("http://localhost:3001/", request).then((res) => {
       console.log(res.data);
       setOutput(res.data);

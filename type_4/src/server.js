@@ -45,12 +45,12 @@ app.post('/', (req, res) => {
     // console.log('Hello world');
 });
 
-if(process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.join(__dirname, 'src', 'build')));
+// if(process.env.NODE_ENV === 'production') {
+// 	app.use(express.static(path.join(__dirname, 'src', 'build')));
 
-	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, 'src', 'build', 'index.html'))
-	});
-}
+// 	app.get('*', (req, res) => {
+// 		res.sendFile(path.join(__dirname, 'src', 'build', 'index.html'))
+// 	});
+// }
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));

@@ -115,7 +115,7 @@ int main(int argc, char* argv[])
 
     quicksort(arr,0,n-1);
     // printf("Reversed array is \n");
-    printArray(arr, n);
+    // printArray(arr, n);
 
 
 
